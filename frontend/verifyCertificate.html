@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Verify Certificate</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🔍 Verify Certificate</h1>
+
+      <form id="verifyCertificate">
+        <input type="text" id="year" placeholder="Year" required />
+        <input type="text" id="verifyCertificateId" placeholder="Enter Certificate ID" required />
+        <button type="submit" class="btn">Verify</button>
+      </form>
+
+      <div id="verificationResult" style="margin-top: 20px;"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("verifyCertificate").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const certId = document.getElementById("verifyCertificateId").value.trim();
+      const resultDiv = document.getElementById("verificationResult");
+
+      if (!certId) {
+        resultDiv.innerHTML = "<p>Please enter a certificate ID.</p>";
+        return;
+      }
+
+      fetch(`/api/verifyCertificate/${certId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            const cert = data;
+            resultDiv.innerHTML = `
+              <h3 style="color: green;">✅ Certificate Verified</h3>
+              <p><span class="name-highlight">${cert.name || 'N/A'}</span></p>
+              <p><strong>ID:</strong> ${cert.id}</p>
+              <p><strong>Course:</strong> ${cert.course || 'N/A'}</p>
+              <p><strong>Issued On:</strong> ${cert.issuedOn || 'N/A'}</p>
+            `;
+          } else {
+            resultDiv.innerHTML = "<h3 style='color: red;'>❌ Certificate not found.</h3>";
+          }
+        })
+        .catch((err) => {
+          console.error("Verification error:", err);
+          resultDiv.innerHTML = "<h3 style='color: orange;'>⚠️ Error verifying certificate.</h3>";
+        });
+    });
+  </script>
+</body>
+</html>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0, 255, 204, 0.15);
+    backdrop-filter: blur(14px);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 14px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  #verificationResult {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+  }
+
+  #verificationResult h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  #verificationResult p {
+    font-size: 1.1rem;
+    margin: 6px 0;
+  }
+
+  #verificationResult .name-highlight {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #00ffcc;
+  }
+</style>
+

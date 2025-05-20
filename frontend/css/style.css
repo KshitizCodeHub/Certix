@@ -1,0 +1,108 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+    overflow: hidden;
+  }
+  
+  /* Container to hold the card */
+  .container {
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+  }
+  
+  /* Card style with futuristic glass look */
+  .card {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 255, 153, 0.3);
+  }
+  
+  /* Header Title */
+  h1 {
+    font-size: 2.4rem;
+    color: #ffffff;
+    margin-bottom: 14px;
+    text-shadow: 0 0 5px rgba(0, 255, 153, 0.3);
+  }
+  
+  /* Highlight text */
+  .highlight {
+    color: #00ff99;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 255, 153, 0.6);
+  }
+  
+  /* Subtitle */
+  .subtitle {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  
+  /* Button Container */
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Base Button Style */
+  .btn {
+    padding: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 255, 153, 0.2);
+  }
+  
+  /* Primary Glowing Button */
+  .btn:not(.outline) {
+    background: linear-gradient(90deg, #00ff99, #00ccff);
+    color: #000;
+    border: none;
+  }
+  
+  .btn:not(.outline):hover {
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+    transform: scale(1.02);
+  }
+  
+  /* Glass Outline Button */
+  .btn.outline {
+    background-color: transparent;
+    border: 2px solid #00ffcc;
+    color: #00ffcc;
+  }
+  
+  .btn.outline:hover {
+    background-color: rgba(0, 255, 204, 0.1);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.4);
+  }
+  

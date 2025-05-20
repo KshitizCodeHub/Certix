@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Certificate</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>📄 Submit Certificate</h1>
+      <form id="submitCertificate">
+        <input type="text" id="studentName" placeholder="Student Name" required />
+        <input type="text" id="certificateId" placeholder="Certificate ID" required />
+        <input type="text" id="course" placeholder="Course Name" required />
+        <input type="text" id="year" placeholder="Year of Issue" required />
+        <button type="submit" class="btn">Submit Certificate</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/blockchain.js"></script>
+</body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(0, 255, 204, 0.15);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+</style>
